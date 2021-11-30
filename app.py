@@ -13,15 +13,14 @@ ex_text,ex_labels=examples_load()
 
 if __name__ == '__main__':
     st.header("Multi-label Classification for Long Text")
-    st.write("This app allows you to classify any long text into any categories you are interested in.")
+    st.write("This app allows you to tag any long text with multiple labels.")
 
 
     with st.form(key='my_form'):
         text_input = st.text_area("Input any text you want to classify here:",ex_text)
         labels = st.text_input('Write any topic keywords you are interested in here (separate different topics with a ","):',ex_labels, max_chars=1000)
         labels = list(set([x.strip() for x in labels.strip().split(',') if len(x.strip()) > 0]))
-        radio = st.radio("Select Multiclass",('Only one topic can be corect at a time','Multiple topics can be correct at a time'),)
-        multi_class= True if radio=="Multiple topics can be correct at a time" else False
+        multi_class = True
         submit_button = st.form_submit_button(label='Submit')
 
     if submit_button:
