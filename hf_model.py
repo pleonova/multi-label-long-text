@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification,pipel
 import torch
 
 def load_model():
-    model_name = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+    model_name = "facebook/bart-large-mnli"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
     classifier = pipeline(task='zero-shot-classification', model=model, tokenizer=tokenizer, framework='pt')
