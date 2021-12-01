@@ -3,7 +3,14 @@ import torch
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
-from nltk.tokenize import sent_tokenize
+import spacy
+nlp = spacy.load('en_core_web_sm')
+
+# text = "How are you today? I hope you have a great day"
+# tokens = nlp(text)
+# for sent in tokens.sents:
+#     print(sent.string.strip())
+
 
 # Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
 def create_nest_sentences(document, token_max_length = 1024):
@@ -11,8 +18,9 @@ def create_nest_sentences(document, token_max_length = 1024):
   sent = []
   length = 0
   tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-mnli')
+  tokens = nlp(document)
 
-  for sentence in sent_tokenize(document):
+  for sentence in tokens.sents:
     tokens_in_sentence = tokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
     length += len(tokens_in_sentence)
 
