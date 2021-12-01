@@ -1,5 +1,8 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
 import torch
+
+# from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+
 # import nltk
 
 # nltk.download('punkt')
@@ -24,13 +27,18 @@ import torch
 #     nested.append(sent)
 #   return nested
 
-
 def load_summary_model():
     model_name = "facebook/bart-large-mnli"
-    tokenizer = BartTokenizer.from_pretrained(model_name)
-    model = BartForConditionalGeneration.from_pretrained(model_name)
-    summarizer = pipeline(task='summarization', model=model, tokenizer=tokenizer, framework='pt')
+    summarizer = pipeline(task='summarization', model=model_name)
     return summarizer
+
+
+# def load_summary_model():
+#     model_name = "facebook/bart-large-mnli"
+#     tokenizer = BartTokenizer.from_pretrained(model_name)
+#     model = BartForConditionalGeneration.from_pretrained(model_name)
+#     summarizer = pipeline(task='summarization', model=model, tokenizer=tokenizer, framework='pt')
+#     return summarizer
 
 
 def summarizer_gen(summarizer, sequence:str, maximum_tokens:int, minimum_tokens:int):
