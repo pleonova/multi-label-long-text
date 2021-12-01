@@ -31,5 +31,6 @@ if __name__ == '__main__':
         summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
         st.markdown("### Text Summary")
         st.markdown(summary)
+        st.markdown("### Top Label Predictions")
         top_topics, scores = classifier_zero(classifier, sequence=text_input, labels=labels, multi_class=True)
         plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
