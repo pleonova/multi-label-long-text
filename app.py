@@ -6,8 +6,7 @@ import streamlit as st
 from hf_model import create_nest_sentences, load_summary_model, summarizer_gen, load_model, classifier_zero
 from utils import plot_result, examples_load
 import json
-import nltk
-nltk.download('punkt')
+
 
 summarizer = load_summary_model()
 classifier = load_model()

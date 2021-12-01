@@ -3,8 +3,7 @@ import torch
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
-import nltk
-nltk.download('punkt')
+from nltk.tokenize import sent_tokenize
 
 # Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
 def create_nest_sentences(document, token_max_length = 1024):
@@ -13,7 +12,7 @@ def create_nest_sentences(document, token_max_length = 1024):
   length = 0
   tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-mnli')
 
-  for sentence in nltk.sent_tokenize(document):
+  for sentence in sent_tokenize(document):
     tokens_in_sentence = tokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
     length += len(tokens_in_sentence)
 
