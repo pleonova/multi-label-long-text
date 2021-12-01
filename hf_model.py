@@ -11,8 +11,10 @@ def create_nest_sentences(document, token_max_length = 1024):
   nested = []
   sent = []
   length = 0
+  tokenizer = AutoTokenizer.from_pretrained('facebook/bart-large-mnli')
+
   for sentence in nltk.sent_tokenize(document):
-    tokens_in_sentence = AutoTokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
+    tokens_in_sentence = tokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
     length += len(tokens_in_sentence)
 
     if length < token_max_length:
