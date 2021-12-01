@@ -3,8 +3,8 @@
 from os import write
 from typing import Sequence
 import streamlit as st
-from hf_model import classifier_zero,load_model
-from utils import plot_result,examples_load
+from hf_model import classifier_zero, load_model
+from utils import plot_result, examples_load
 import json
 
 classifier=load_model()
@@ -20,11 +20,10 @@ if __name__ == '__main__':
         text_input = st.text_area("Input any text you want to classify here:",ex_text)
         labels = st.text_input('Write any topic keywords you are interested in here (separate different topics with a ","):',ex_labels, max_chars=1000)
         labels = list(set([x.strip() for x in labels.strip().split(',') if len(x.strip()) > 0]))
-        multi_class = True
         submit_button = st.form_submit_button(label='Submit')
 
     if submit_button:
         if len(labels) == 0:
             st.write('Enter some text and at least one possible topic to see predictions.')
-        top_topics, scores = classifier_zero(classifier,sequence=text_input,labels=labels,multi_class=multi_class)
+        top_topics, scores = classifier_zero(classifier,sequence=text_input,labels=labels,multi_class=True)
         plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
