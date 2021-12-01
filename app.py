@@ -13,7 +13,7 @@ ex_text,ex_labels=examples_load()
 
 if __name__ == '__main__':
     st.header("Multi-label Classification for Long Text")
-    st.write("This app allows you to tag any long text with multiple labels.")
+    st.write("This app identifies multiple relevant labels for your long text.")
 
 
     with st.form(key='my_form'):
