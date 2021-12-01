@@ -3,7 +3,7 @@
 from os import write
 from typing import Sequence
 import streamlit as st
-from hf_model import load_summary_model, summarizer_gen, load_model, classifier_zero
+from hf_model import create_nest_sentences, load_summary_model, summarizer_gen, load_model, classifier_zero
 from utils import plot_result, examples_load
 import json
 
@@ -28,9 +28,22 @@ if __name__ == '__main__':
     if submit_button:
         if len(labels) == 0:
             st.write('Enter some text and at least one possible topic to see predictions.')
-        summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
+
+        # # For each body of text, create text chunks of a certain token size required by the transformer
+        # nested_sentences = create_nest_sentences(document = text_input, token_max_length = 1024)
+
+        # summary = []
+        # # For each chunk of sentences (within the token max), generate a summary
+        # for n in range(0, len(nested_sentences)):
+        #     text_chunk = " ".join(list(nested_sentences[n]))
+        #     chunk_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
+        #     summary.append(chunk_summary) 
+        #     # Combine all the summaries into a list and compress into one document, again
+        #     final_summary = " ".join(list(summary))
+
+        final_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
         st.markdown("### Text Summary")
-        st.markdown(summary)
+        st.markdown(final_summary)
         st.markdown("### Top Label Predictions")
         top_topics, scores = classifier_zero(classifier, sequence=text_input, labels=labels, multi_class=True)
         plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
