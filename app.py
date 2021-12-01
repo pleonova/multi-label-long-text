@@ -28,7 +28,7 @@ if __name__ == '__main__':
     if submit_button:
         if len(labels) == 0:
             st.write('Enter some text and at least one possible topic to see predictions.')
-        summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100, do_sample=False)
+        summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
         st.text(summary)
         top_topics, scores = classifier_zero(classifier, sequence=text_input, labels=labels, multi_class=True)
         plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
