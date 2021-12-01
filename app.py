@@ -7,7 +7,7 @@ from hf_model import load_summary_model, summarizer_gen, load_model, classifier_
 from utils import plot_result, examples_load
 import json
 
-summarzier = load_summary_model()
+summarizer = load_summary_model()
 classifier = load_model()
 ex_text, ex_labels = examples_load()
 
