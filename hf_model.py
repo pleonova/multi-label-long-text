@@ -3,9 +3,9 @@ import torch
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
-# import nltk
+import nltk
 
-# nltk.download('punkt')
+nltk.download('punkt')
 
 # # Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
 # def create_nest_sentences(document, token_max_length = 1024):
