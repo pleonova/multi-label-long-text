@@ -27,6 +27,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipe
 #     nested.append(sent)
 #   return nested
 
+# Reference: https://huggingface.co/facebook/bart-large-cnn
 def load_summary_model():
     model_name = "facebook/bart-large-mnli"
     summarizer = pipeline(task='summarization', model=model_name)
