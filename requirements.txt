@@ -2,4 +2,4 @@ transformers[sentencepiece]==4.11.0
 streamlit
 plotly
 torch
-nltk
+spacy
