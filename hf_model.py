@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipe
 
 import nltk
 
-nltk.download('punkt')
+nlp = nltk.download('punkt')
 
 # # Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
 # def create_nest_sentences(document, token_max_length = 1024):
