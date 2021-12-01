@@ -1,28 +1,28 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, BartTokenizer, BartForConditionalGeneration, pipeline
 import torch
-import nltk
+# import nltk
 
-nltk.download('punkt')
+# nltk.download('punkt')
 
-# Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
-def create_nest_sentences(document, token_max_length = 1024):
-  nested = []
-  sent = []
-  length = 0
-  for sentence in nltk.sent_tokenize(document):
-    tokens_in_sentence = tokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
-    length += len(tokens_in_sentence)
+# # Reference: https://discuss.huggingface.co/t/summarization-on-long-documents/920/7
+# def create_nest_sentences(document, token_max_length = 1024):
+#   nested = []
+#   sent = []
+#   length = 0
+#   for sentence in nltk.sent_tokenize(document):
+#     tokens_in_sentence = tokenizer(sentence, truncation=False, padding=False)[0] # hugging face transformer tokenizer
+#     length += len(tokens_in_sentence)
 
-    if length < token_max_length:
-      sent.append(sentence)
-    else:
-      nested.append(sent)
-      sent = []
-      length = 0
+#     if length < token_max_length:
+#       sent.append(sentence)
+#     else:
+#       nested.append(sent)
+#       sent = []
+#       length = 0
 
-  if sent:
-    nested.append(sent)
-  return nested
+#   if sent:
+#     nested.append(sent)
+#   return nested
 
 
 def load_summary_model():
