@@ -31,8 +31,9 @@ if __name__ == '__main__':
             st.write('Enter some text and at least one possible topic to see predictions.')
 
         # For each body of text, create text chunks of a certain token size required by the transformer
-        # nested_sentences = create_nest_sentences(document = text_input, token_max_length = 1024)
-
+        nested_sentences = create_nest_sentences(document = text_input, token_max_length = 1024)
+        st.markdown("### Sentences")
+        st.markdown(nested_sentences)
         # summary = []
         # # For each chunk of sentences (within the token max), generate a summary
         # for n in range(0, len(nested_sentences)):
