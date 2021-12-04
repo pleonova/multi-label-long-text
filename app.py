@@ -31,18 +31,18 @@ if __name__ == '__main__':
             st.write('Enter some text and at least one possible topic to see predictions.')
 
         # For each body of text, create text chunks of a certain token size required by the transformer
-        nested_sentences = create_nest_sentences(document = text_input, token_max_length = 1024)
+        # nested_sentences = create_nest_sentences(document = text_input, token_max_length = 1024)
 
-        summary = []
-        # For each chunk of sentences (within the token max), generate a summary
-        for n in range(0, len(nested_sentences)):
-            text_chunk = " ".join(list(nested_sentences[n]))
-            chunk_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
-            summary.append(chunk_summary) 
-            # Combine all the summaries into a list and compress into one document, again
-            final_summary = " ".join(list(summary))
+        # summary = []
+        # # For each chunk of sentences (within the token max), generate a summary
+        # for n in range(0, len(nested_sentences)):
+        #     text_chunk = " ".join(list(nested_sentences[n]))
+        #     chunk_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
+        #     summary.append(chunk_summary) 
+        #     # Combine all the summaries into a list and compress into one document, again
+        #     final_summary = " ".join(list(summary))
 
-        # final_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
+        final_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
         st.markdown("### Text Summary")
         st.markdown(final_summary)
         st.markdown("### Top Label Predictions")
