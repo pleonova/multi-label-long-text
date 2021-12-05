@@ -37,7 +37,7 @@ if __name__ == '__main__':
         summary = []
         # For each chunk of sentences (within the token max), generate a summary
         for n in range(0, len(nested_sentences)):
-            text_chunk = " ".join(list(nested_sentences[n]))
+            text_chunk = " ".join(map(str, nested_sentences[n]))
         #     chunk_summary = summarizer_gen(summarizer, sequence=text_input, maximum_tokens = 30, minimum_tokens = 100)
         #     summary.append(chunk_summary) 
         #     # Combine all the summaries into a list and compress into one document, again

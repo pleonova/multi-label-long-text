@@ -25,7 +25,7 @@ def create_nest_sentences(document:str, token_max_length = 1024):
     length += len(tokens_in_sentence)
 
     if length < token_max_length:
-      sent.append(str(sentence))
+      sent.append(sentence)
     else:
       nested.append(sent)
       sent = []
