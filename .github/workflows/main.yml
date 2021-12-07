@@ -16,4 +16,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_MULTI }}
-        run: git push https://pleonova:$HF_TOKEN@huggingface.co/spaces/multi-label-long-text main
+        run: git push https://pleonova:$HF_TOKEN@huggingface.co/spaces/pleonova/multi-label-long-text main
