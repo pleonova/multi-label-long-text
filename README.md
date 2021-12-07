@@ -8,7 +8,7 @@ app_file: app.py
 pinned: false
 ---
 
-Interactive version: This app is hosted on Huggingface.com/spaces
+Interactive version: This app is hosted on https://huggingface.co/spaces/pleonova/multi-label-long-text
 
 Objectvie: As the name may suggest, the goal of this app is to identify multiple relevant labels for long text.
 
