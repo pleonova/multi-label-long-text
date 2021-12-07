@@ -35,7 +35,7 @@ def create_nest_sentences(document:str, token_max_length = 1024):
     nested.append(sent)
   return nested
 
-# Reference: https://huggingface.co/facebook/bart-large-cnn
+# Reference: https://huggingface.co/facebook/bart-large-mnli
 def load_summary_model():
     model_name = "facebook/bart-large-mnli"
     summarizer = pipeline(task='summarization', model=model_name)
@@ -51,7 +51,7 @@ def load_summary_model():
 
 
 def summarizer_gen(summarizer, sequence:str, maximum_tokens:int, minimum_tokens:int):
-	output = summarizer(sequence, max_length=maximum_tokens, min_length=minimum_tokens, do_sample=False)
+	output = summarizer(sequence, num_beams=4, max_length=maximum_tokens, min_length=minimum_tokens, do_sample=False)
 	return output[0].get('summary_text')
 
 
